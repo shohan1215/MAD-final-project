@@ -30,41 +30,43 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   void _register() async {
-  if (_formKey.currentState!.validate()) {
-    try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
+    if (_formKey.currentState!.validate()) {
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        );
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("✅ Account created successfully!")),
-      );
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("✅ Account created successfully!")),
+        );
 
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const LoginScreen()),
-      );
-    } on FirebaseAuthException catch (e) {
-      String errorMsg;
-      switch (e.code) {
-        case 'email-already-in-use':
-          errorMsg = 'This email is already in use.';
-          break;
-        case 'weak-password':
-          errorMsg = 'Password should be at least 6 characters.';
-          break;
-        case 'invalid-email':
-          errorMsg = 'The email address is invalid.';
-          break;
-        default:
-          errorMsg = e.message ?? 'Signup failed';
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const LoginScreen()),
+        );
+      } on FirebaseAuthException catch (e) {
+        String errorMsg;
+        switch (e.code) {
+          case 'email-already-in-use':
+            errorMsg = 'This email is already in use.';
+            break;
+          case 'weak-password':
+            errorMsg = 'Password should be at least 6 characters.';
+            break;
+          case 'invalid-email':
+            errorMsg = 'The email address is invalid.';
+            break;
+          default:
+            errorMsg = e.message ?? 'Signup failed';
+        }
+
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(errorMsg)));
       }
-
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(errorMsg)));
     }
   }
-}
 
   @override
   Widget build(BuildContext context) {
@@ -101,9 +103,11 @@ class _SignupScreenState extends State<SignupScreen> {
                     labelText: "Full Name",
                     border: OutlineInputBorder(),
                   ),
-                  validator: (value) => value == null || value.isEmpty
-                      ? "Full name is required"
-                      : null,
+                  validator:
+                      (value) =>
+                          value == null || value.isEmpty
+                              ? "Full name is required"
+                              : null,
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
@@ -126,7 +130,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   controller: studentIdController,
                   decoration: const InputDecoration(
                     labelText: "Student ID",
-                    hintText: "221-15-5133",
+                    hintText: "221-15-6012",
                     border: OutlineInputBorder(),
                   ),
                   validator: (value) {
@@ -194,7 +198,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (_) => const LoginScreen()),
+                            builder: (_) => const LoginScreen(),
+                          ),
                         );
                       },
                       child: const Text(
@@ -206,7 +211,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),

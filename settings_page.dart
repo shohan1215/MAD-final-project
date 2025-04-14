@@ -5,19 +5,17 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final profileImage =
-        'assets/images/pp.jpg'; // Replace with actual image
+    final profileImage = 'assets/images/pp.jpg'; // Replace with actual image
 
     return Scaffold(
-      backgroundColor: const Color(
-          0xFFE9DED3), // Match the background style
+      backgroundColor: const Color(0xFFE9DED3), // Match the background style
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('SETTINGS',
-            style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w700)),
+        title: const Text(
+          'SETTINGS',
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
+        ),
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new),
@@ -35,15 +33,10 @@ class SettingsPage extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             const Text(
-              'Mahfuj',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
+              'Mobile Application Lab Project',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            const Text(
-              'Mahfuj@gmail.com',
-              style: TextStyle(color: Colors.grey),
-            ),
+            const Text('mad@gmail.com', style: TextStyle(color: Colors.grey)),
             const SizedBox(height: 24),
 
             // Personal Info Button
@@ -94,11 +87,7 @@ class SettingsPage extends StatelessWidget {
                 title: 'Notifications',
                 onTap: () {},
               ),
-              _buildSettingsItem(
-                icon: Icons.help,
-                title: 'Help',
-                onTap: () {},
-              ),
+              _buildSettingsItem(icon: Icons.help, title: 'Help', onTap: () {}),
               _buildSettingsItem(
                 icon: Icons.info,
                 title: 'About',
@@ -112,10 +101,12 @@ class SettingsPage extends StatelessWidget {
   }
 
   // Widget for the personal info button
-  Widget _buildButtonCard(BuildContext context,
-      {required String title,
-      required IconData icon,
-      required VoidCallback onTap}) {
+  Widget _buildButtonCard(
+    BuildContext context, {
+    required String title,
+    required IconData icon,
+    required VoidCallback onTap,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -129,10 +120,10 @@ class SettingsPage extends StatelessWidget {
           children: [
             Icon(icon, color: Colors.grey),
             const SizedBox(width: 12),
-            Text(title,
-                style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500)),
+            Text(
+              title,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
           ],
         ),
       ),
@@ -161,8 +152,7 @@ class SettingsPage extends StatelessWidget {
       onTap: onTap,
       leading: Icon(icon, color: Colors.grey[700]),
       title: Text(title),
-      trailing:
-          const Icon(Icons.arrow_forward_ios, size: 16),
+      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
     );
   }
 }

@@ -27,59 +27,55 @@ class TopicsPage extends StatelessWidget {
         child: Column(
           children: [
             UserAccountsDrawerHeader(
-              accountName: Text("Mahfuj"),
-              accountEmail: Text("mahfuj@gmail.com"),
+              accountName: Text("Mobile Application Lab Project"),
+              accountEmail: Text("mad@gmail.com"),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage(
-                    'https://i.pravatar.cc/150?img=3'),
+                  'https://i.pravatar.cc/150?img=3',
+                ),
               ),
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-              ),
+              decoration: BoxDecoration(color: Theme.of(context).primaryColor),
             ),
             ListTile(
-              leading: Icon(Icons.home,
-                  color: Colors.blueAccent),
+              leading: Icon(Icons.home, color: Colors.blueAccent),
               title: Text('Home'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              leading: Icon(Icons.school,
-                  color: Colors.deepPurple),
+              leading: Icon(Icons.school, color: Colors.deepPurple),
               title: Text('My Courses'),
               onTap: () {
                 print("Settings clicked");
               },
             ),
             ListTile(
-              leading:
-                  Icon(Icons.bookmark, color: Colors.teal),
+              leading: Icon(Icons.bookmark, color: Colors.teal),
               title: Text('Saved Notes'),
               onTap: () {
                 print("Settings clicked");
               },
             ),
             ListTile(
-              leading: Icon(Icons.folder_copy_rounded,
-                  color: Colors.orangeAccent),
+              leading: Icon(
+                Icons.folder_copy_rounded,
+                color: Colors.orangeAccent,
+              ),
               title: Text('My Materials'),
               onTap: () {
                 print("Settings clicked");
               },
             ),
             ListTile(
-              leading: Icon(Icons.settings,
-                  color: Colors.grey.shade700),
+              leading: Icon(Icons.settings, color: Colors.grey.shade700),
               title: Text('Settings'),
               onTap: () {
                 print("Settings clicked");
               },
             ),
             ListTile(
-              leading: Icon(Icons.info,
-                  color: Colors.indigoAccent),
+              leading: Icon(Icons.info, color: Colors.indigoAccent),
               title: Text('About'),
               onTap: () {
                 print("About clicked");
@@ -87,18 +83,14 @@ class TopicsPage extends StatelessWidget {
             ),
             Divider(),
             ListTile(
-              leading: Icon(Icons.logout,
-                  color: Colors.redAccent),
+              leading: Icon(Icons.logout, color: Colors.redAccent),
               title: Text('Logout'),
               onTap: () async {
-               
                 await FirebaseAuth.instance.signOut();
 
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          const LoginScreen()),
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
                   (Route<dynamic> route) => false,
                 );
               },
@@ -113,10 +105,7 @@ class TopicsPage extends StatelessWidget {
           children: [
             const Text(
               'Explore by topics',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey,
-              ),
+              style: TextStyle(fontSize: 14, color: Colors.grey),
             ),
             const SizedBox(height: 16),
             _buildSearchBar(),
@@ -155,10 +144,7 @@ class TopicsPage extends StatelessWidget {
             },
             child: const Text(
               'Filter',
-              style: TextStyle(
-                color: Colors.blue,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
             ),
           ),
         ],
@@ -169,22 +155,15 @@ class TopicsPage extends StatelessWidget {
   Widget _buildTopicsGrid() {
     final topics = [
       {'title': 'Data Communication', 'color': Colors.blue},
-      {
-        'title': 'Basic Electronics',
-        'color': Colors.orange
-      },
+      {'title': 'Basic Electronics', 'color': Colors.orange},
       {'title': 'Basic Mathematics', 'color': Colors.green},
-      {
-        'title': 'Electrical Circuits',
-        'color': Colors.purple
-      },
+      {'title': 'Electrical Circuits', 'color': Colors.purple},
       {'title': 'Art Of Living', 'color': Colors.red},
     ];
 
     return Expanded(
       child: GridView.builder(
-        gridDelegate:
-            const SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 16,
           crossAxisSpacing: 16,
